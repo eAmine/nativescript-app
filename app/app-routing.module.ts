@@ -9,7 +9,8 @@ const routes: Routes = [
     {path: "search", loadChildren: "./search/search.module#SearchModule"},
     {path: "featured", loadChildren: "./featured/featured.module#FeaturedModule"},
     {path: "settings", loadChildren: "./settings/settings.module#SettingsModule"},
-    {path: "claim", loadChildren: "./claim/claim.module#ClaimModule"}
+    {path: "claim", loadChildren: "./claim/claim.module#ClaimModule"},
+    {path: "contract", loadChildren: "./contract/contract.module#ContractModule"}
 ];
 
 @NgModule({
