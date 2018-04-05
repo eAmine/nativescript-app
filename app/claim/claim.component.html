@@ -31,7 +31,32 @@ it shouldn't have any other siblings other than the <ActionBar> component.
     Use the tkMainContent directive to display the content of the page when you have an app drawer.
     -->
     <GridLayout class="page page-content" tkMainContent>
-        <Label class="page-icon fa" text="&#xf1ea;"></Label>
-        <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+        <StackLayout>
+            <RadDataForm [source]="claimEvent" tkExampleTitle tkToggleNavButton>
+                <TKEntityProperty tkDataFormProperty name="natureCode" displayName="Nature du sinistre" index="0"
+                                  [valuesProvider]="natureNames">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="lossDate" displayName="Date de survenance" index="1">
+                    <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="lossTime" displayName="Heure de survenance" index="2">
+                    <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="circumstance" displayName="Circonstance du sinistre"
+                                  index="3">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="description" displayName="Lieu du sinistre" index="4">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="isThirdPartyPresent" displayName="Présence d'un tiers"
+                                  index="5">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
+                </TKEntityProperty>
+            </RadDataForm>
+            <Button text="Suivant" (tap)="onTap()"
+                    horizontalAlignment="stretch"></Button>
+        </StackLayout>
     </GridLayout>
 </RadSideDrawer>
