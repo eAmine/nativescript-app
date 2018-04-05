@@ -30,8 +30,32 @@ it shouldn't have any other siblings other than the <ActionBar> component.
     <!--
     Use the tkMainContent directive to display the content of the page when you have an app drawer.
     -->
-    <GridLayout class="page page-content" tkMainContent>
-        <Label class="page-icon fa" text="&#xf1ea;"></Label>
-        <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+    <GridLayout class="page page-content" tkMainContent>        
+        <!--
+        The TabView component provides a simple way to navigate between different views by
+        tapping on some of the tabs or by swiping between the views.
+        Learn more about the TabView component in this documentation article:
+        http://docs.nativescript.org/angular/code-samples/ui/tab-view
+        -->
+        <TabView (selectedIndexChanged)="onSelectedIndexChanged($event)">
+            <!--
+            To add a new TabView item, add a new layout component with a tabItem Angular directive.
+            Assign the tabItem directive an object that declares the tab item button's title and icon source.
+            -->
+            <StackLayout *tabItem="{title: 'Infos', iconSource: getIconSource('infos')}">
+                <!--
+                You can declare the layout and components of each view inside the TabView items directly.
+                In this case the view contents and back end logic are separated in nested components.
+                You can find these components in their respective folders /home, /browse etc.
+                -->
+                <Infos></Infos>
+            </StackLayout>
+            <StackLayout *tabItem="{title: 'Docs', iconSource: getIconSource('docs')}">
+                <Browse></Browse>
+            </StackLayout>
+            <StackLayout *tabItem="{title: 'Couriers', iconSource: getIconSource('couriers')}">
+                <Search></Search>
+            </StackLayout>
+        </TabView>
     </GridLayout>
 </RadSideDrawer>

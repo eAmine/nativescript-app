@@ -1,0 +1,5 @@
+/app/*.js
+*.js
+/node_modules
+/platforms
+/package-lock.json
