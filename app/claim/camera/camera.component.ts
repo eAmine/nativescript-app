@@ -8,6 +8,7 @@ import {RadSideDrawerComponent} from "nativescript-ui-sidedrawer/angular";
 import {RouterExtensions} from "nativescript-angular";
 import {ClaimFormDataService} from "../service/claim.service";
 import {DrawerTransitionBase, SlideInOnTopTransition} from "nativescript-ui-sidedrawer";
+import {TNSFancyAlert} from "nativescript-fancyalert";
 
 @Component({
     selector: "Camera",
@@ -83,9 +84,8 @@ export class CameraComponent implements OnInit {
     }
 
     save() {
-        // Navigate to the work page
+        TNSFancyAlert.showSuccess("S2017081234", "Votre sinistre a été créé.", "Retour");
         this.routerExtensions.navigate(["/home"]);
-
     }
 
 }

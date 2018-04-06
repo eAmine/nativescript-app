@@ -32,12 +32,20 @@ it shouldn't have any other siblings other than the <ActionBar> component.
     -->
     <GridLayout class="page page-content" tkMainContent>
         <GridLayout columns="*,*,*,*,*" rows="*,*,*,*,*,*,*,*" sdkExampleTitle sdkToggleNavButton>
-            <Button text="4" col="2" row="0" style="background-color: #8C489F; margin: 5;"></Button>
-            <Image src="res://car" col="1" row="1" rowSpan="5"
-                   colSpan="3" stretch="aspectFill"></Image>
-            <Button text="4" col="0" row="3" style="background-color: #8C489F; margin: 5;"></Button>
-            <Button text="4" col="5" row="3" style="background-color: #8C489F; margin: 5;"></Button>
-            <Button text="4" col="2" row="6" style="background-color: #8C489F; margin: 5;"></Button>
+            <CheckBox #CB2 checked="false" fillColor="blue" col="2" row="0"
+                      style="background-color: #8C489F; margin: 5;"></CheckBox>
+            <Image src="res://carnaked" col="1" row="1" rowSpan="5"
+                   colSpan="3" stretch="aspectFill" verticalAligment="center"></Image>
+            <CheckBox #CB3 checked="false" fillColor="blue" col="1" row="2"
+                      style="background-color: #8C489F; margin: 5;"></CheckBox>
+            <CheckBox #CB3 checked="false" fillColor="blue" col="1" row="4"
+                      style="background-color: #8C489F; margin: 5;"></CheckBox>
+            <CheckBox #CB4 checked="false" fillColor="blue" col="3" row="2"
+                      style="background-color: #8C489F; margin: 5;"></CheckBox>
+            <CheckBox #CB5 checked="false" fillColor="blue" col="3" row="3"
+                      style="background-color: #8C489F; margin: 5;"></CheckBox>
+            <CheckBox #CB6 checked="false" fillColor="blue" col="2" row="5"
+                      style="background-color: #8C489F; margin: 5;"></CheckBox>
             <GridLayout columns="*,*,*,*,*,*" rows="*" row="7" col="0" colSpan="5">
                 <Button text="Précedent" row="0" col="1" colSpan="2"
                         style="background-color: #0099CC; margin: 5;"

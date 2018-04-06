@@ -9,13 +9,14 @@ import {ClaimFormDataService} from "./service/claim.service";
 import {ImpactComponent} from "./impact/impact.component";
 import {NativeScriptRouterModule} from "nativescript-angular";
 import {CameraComponent} from "./camera/camera.component";
+import {TNSCheckBoxModule} from "nativescript-checkbox/angular";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         ClaimRoutingModule,
         NativeScriptUIDataFormModule,
-        SharedModule, NativeScriptRouterModule
+        SharedModule, NativeScriptRouterModule, TNSCheckBoxModule
     ],
     providers: [{provide: ClaimFormDataService, useClass: ClaimFormDataService}],
     declarations: [
