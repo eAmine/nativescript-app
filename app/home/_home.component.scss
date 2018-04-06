@@ -6,25 +6,46 @@
 	background-color: #f2f3f9;
 	margin: 50px;
 	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-	vertical-align:middle;
+	vertical-align: middle;
 
 	&.top {
-		margin-top:100px;
+		margin-top: 100px;
 	}
 
 	&.bottom {
-		margin-bottom:100px;
+		margin-bottom: 100px;
 	}
 
-		&.left {
-		margin-left:100px;
+	&.left {
+		margin-left: 100px;
 	}
 
 	&.right {
-		margin-right:100px;
+		margin-right: 100px;
 	}
 }
 
 .tile-label {
-	font-weight:bold;
+	font-weight: bold;
+}
+
+.bottom-bar {
+	background-color : #281644;
+	vertical-align: middle;
+
+	.bottom-bar-icon-container {
+		height: 50px;
+		vertical-align: middle;
+
+		.bottom-bar-icon {
+		}
+	}
+}
+
+.action-label {
+	font-size: 16px;
+}
+
+.header-item {
+	vertical-align: middle;
 }
