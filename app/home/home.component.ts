@@ -1,13 +1,21 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { DrawerTransitionBase, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
+import { ScrollView, ScrollEventData } from "tns-core-modules/ui/scroll-view";
+import { RouterExtensions } from "nativescript-angular/router";
+
+import { NgShadowModule } from 'nativescript-ng-shadow';
 
 @Component({
     selector: "Home",
     moduleId: module.id,
-    templateUrl: "./home.component.html"
+    templateUrl: "./home.component.html",
+	styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+	constructor(private routerExtensions: RouterExtensions) {}
+
     /* ***********************************************************
     * Use the @ViewChild decorator to get a reference to the drawer component.
     * It is used in the "onDrawerButtonTap" function below to manipulate the drawer.
@@ -33,5 +41,13 @@ export class HomeComponent implements OnInit {
     *************************************************************/
     onDrawerButtonTap(): void {
         this.drawerComponent.sideDrawer.showDrawer();
+    }
+
+	onTapHomeTile(navItemRoute: string): void {
+        this.routerExtensions.navigate([navItemRoute], {
+            transition: {
+                name: "fade"
+            }
+        });
     }
 }
