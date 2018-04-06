@@ -3,11 +3,13 @@ import {DrawerTransitionBase, SlideInOnTopTransition} from "nativescript-ui-side
 import {RadSideDrawerComponent} from "nativescript-ui-sidedrawer/angular";
 import {isAndroid} from "platform";
 import {SelectedIndexChangedEventData, TabView, TabViewItem} from "tns-core-modules/ui/tab-view";
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
     selector: "Contract",
     moduleId: module.id,
-    templateUrl: "./contract.component.html"
+    templateUrl: "./contract.component.html",
+	styleUrls: ['./contract.component.scss']
 })
 export class ContractComponent implements OnInit {
     /* ***********************************************************
@@ -20,7 +22,7 @@ export class ContractComponent implements OnInit {
     
     private _title: string;
 
-    constructor() {
+    constructor(private routerExtensions: RouterExtensions) {
         /* ***********************************************************
         * Use the constructor to inject app services that will be needed for
         * the whole tab navigation layout as a whole.
@@ -76,5 +78,18 @@ export class ContractComponent implements OnInit {
         const selectedTabViewItem = tabView.items[args.newIndex];
 
         this.title = selectedTabViewItem.title;
+        
+        if(args.newIndex == 3) {
+            this.goToClaim();
+        }
+    }
+
+    goToClaim(): void {
+        console.log("aller vers tototototottt");
+        this.routerExtensions.navigate(['/claim'], {
+            transition: {
+                name: "fade"
+            }
+        });
     }
 }
