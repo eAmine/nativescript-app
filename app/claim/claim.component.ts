@@ -3,11 +3,7 @@ import {DrawerTransitionBase, SlideInOnTopTransition} from "nativescript-ui-side
 import {RadSideDrawerComponent} from "nativescript-ui-sidedrawer/angular";
 import {ClaimEvent} from "./model/ClaimEvent";
 import {Nature} from "./model/nature";
-import {requestPermissions, takePicture} from "nativescript-camera";
-import {ImageSource} from "tns-core-modules/image-source";
-import {layout} from "tns-core-modules/utils/utils";
 import {ImageAsset} from "tns-core-modules/image-asset/image-asset";
-import * as app from "tns-core-modules/application";
 import {ClaimFormDataService} from "./service/claim.service";
 import {RouterExtensions} from "nativescript-angular/router";
 import {RadDataFormComponent} from "nativescript-ui-dataform/angular";
@@ -65,18 +61,11 @@ export class ClaimComponent implements OnInit {
         this._natures.push(new Nature(4, "Bris de Glace"));
         this._natures.push(new Nature(5, "Autre"));
 
-
-    }
-
-    save(): boolean {
-        this.formDataService.setClaimEvent(this.myCommitDataFormComp.dataForm.editedObject);
-        return true;
     }
 
     goToNext() {
         this.myCommitDataFormComp.dataForm.commitAll();
         this.formDataService.setClaimEvent(this._claimEvent);
-        // Navigate to the work page
         this.routerExtensions.navigate(["/claim/impact"]);
 
     }
@@ -89,42 +78,5 @@ export class ClaimComponent implements OnInit {
         this.drawerComponent.sideDrawer.showDrawer();
     }
 
-    onTap() {
-        //this.myCommitDataFormComp.dataForm.commitAll();
 
-        alert(
-            {
-                title: "Registration Details",
-                message: this._claimEvent.toString(),
-                okButtonText: "OK"
-            });
-    }
-
-    onTakePictureTap(args) {
-        requestPermissions().then(
-            () => {
-                takePicture({width: 300, height: 300, keepAspectRatio: true, saveToGallery: this.saveToGallery})
-                    .then((imageAsset: any) => {
-                        this.cameraImage = imageAsset;
-
-                        // if you need image source
-                        let source = new ImageSource();
-                        source.fromAsset(imageAsset).then((source) => {
-                            let width = source.width;
-                            let height = source.height;
-                            if (app.android) {
-                                // the android dimensions are in device pixels
-                                width = layout.toDeviceIndependentPixels(width);
-                                height = layout.toDeviceIndependentPixels(height);
-                            }
-
-                            console.log(`Size: ${width}x${height}`);
-                        });
-                    }, (error) => {
-                        console.log("Error: " + error);
-                    });
-            },
-            () => alert("permissions rejected")
-        );
-    }
 }
