@@ -71,6 +71,11 @@ export class HomeComponent implements OnInit {
 
 	onHomeButtonTap(): void {
 		console.log("tapped home button !");
+		this.routerExtensions.navigate(["/home"], {
+            transition: {
+                name: "fade"
+            }
+        });
 	}
 
 	onEmergencyButtonTap(): void {

@@ -1,15 +1,14 @@
 <ActionBar class="action-bar">
-    <!--
-    Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
-    -->
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
-    <!--
-    Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
-    -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-                ios.position="left">
-    </ActionItem>
-    <Label class="action-bar-title" text="Sinistre"></Label>
+    <StackLayout orientation="horizontal"
+		ios:horizontalAlignment="center"
+		android:horizontalAlignment="center">
+		<StackLayout height="30"  class="header-item">
+			<Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
+		</StackLayout>
+		<StackLayout  height="30" class="header-item" style="margin-left: 16px;">
+			<Label text="SINISTRE"  class="action-label"></Label>
+		</StackLayout>
+	</StackLayout>
 </ActionBar>
 
 <!--
@@ -30,29 +29,50 @@ it shouldn't have any other siblings other than the <ActionBar> component.
     <!--
     Use the tkMainContent directive to display the content of the page when you have an app drawer.
     -->
-    <GridLayout class="page page-content" tkMainContent>
-        <GridLayout columns="*,*,*,*,*" rows="*,*,*,*,*,*,*,*" sdkExampleTitle sdkToggleNavButton>
-            <CheckBox #CB2 checked="false" fillColor="blue" col="2" row="0"
-                      style="background-color: #8C489F; margin: 5;"></CheckBox>
-            <Image src="res://carnaked" col="1" row="1" rowSpan="5"
-                   colSpan="3" stretch="aspectFill" verticalAligment="center"></Image>
-            <CheckBox #CB3 checked="false" fillColor="blue" col="1" row="2"
-                      style="background-color: #8C489F; margin: 5;"></CheckBox>
-            <CheckBox #CB3 checked="false" fillColor="blue" col="1" row="4"
-                      style="background-color: #8C489F; margin: 5;"></CheckBox>
-            <CheckBox #CB4 checked="false" fillColor="blue" col="3" row="2"
-                      style="background-color: #8C489F; margin: 5;"></CheckBox>
-            <CheckBox #CB5 checked="false" fillColor="blue" col="3" row="3"
-                      style="background-color: #8C489F; margin: 5;"></CheckBox>
-            <CheckBox #CB6 checked="false" fillColor="blue" col="2" row="5"
-                      style="background-color: #8C489F; margin: 5;"></CheckBox>
-            <GridLayout columns="*,*,*,*,*,*" rows="*" row="7" col="0" colSpan="5">
-                <Button text="Précedent" row="0" col="1" colSpan="2"
-                        style="background-color: #0099CC; margin: 5;"
-                        (tap)="goToPrevious()" horizontalAlignment="stretch"></Button>
-                <Button text="Suivant" row="0" col="3" colSpan="2" style="background-color: #0099CC; margin: 5;"
-                        (tap)="goToNext()" horizontalAlignment="stretch"></Button>
-            </GridLayout>
-        </GridLayout>
-    </GridLayout>
+	<DockLayout tkMainContent>
+
+		<GridLayout columns="*, *, *, *, *" rows="auto" dock="bottom" class="bottom-bar" height="50">
+			<StackLayout row="0" col="0" class="bottom-bar-icon-container" height="50">
+				<Image src="res://menu2" width="30" height="30" (tap)="onMenuButtonTap()"></Image>
+			</StackLayout>
+			<StackLayout row="0" col="1" class="bottom-bar-icon-container" height="50">
+				<Image src="res://emergency" width="30" height="30"></Image>
+			</StackLayout>
+			<StackLayout row="0" col="2" class="bottom-bar-icon-container" height="50">
+				<Image src="res://home" width="30" height="30" (tap)="onHomeButtonTap()" class="bottom-bar-icon"></Image>
+			</StackLayout>
+			<StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
+				<Image src="res://support" width="30" height="30"></Image>
+			</StackLayout>
+			<StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50">
+				<Image src="res://notification" width="30" height="30"></Image>
+			</StackLayout>
+		</GridLayout>
+
+		<GridLayout dock="top" class="page page-content">
+			<GridLayout columns="*,*,*,*,*" rows="*,*,*,*,*,*,*,*" sdkExampleTitle sdkToggleNavButton>
+				<CheckBox #CB2 checked="false" fillColor="blue" col="2" row="0"
+						  style="background-color: #8C489F; margin: 5;"></CheckBox>
+				<Image src="res://carnaked" col="1" row="1" rowSpan="5"
+					   colSpan="3" stretch="aspectFill" verticalAligment="center"></Image>
+				<CheckBox #CB3 checked="false" fillColor="blue" col="1" row="2"
+						  style="background-color: #8C489F; margin: 5;"></CheckBox>
+				<CheckBox #CB3 checked="false" fillColor="blue" col="1" row="4"
+						  style="background-color: #8C489F; margin: 5;"></CheckBox>
+				<CheckBox #CB4 checked="false" fillColor="blue" col="3" row="2"
+						  style="background-color: #8C489F; margin: 5;"></CheckBox>
+				<CheckBox #CB5 checked="false" fillColor="blue" col="3" row="3"
+						  style="background-color: #8C489F; margin: 5;"></CheckBox>
+				<CheckBox #CB6 checked="false" fillColor="blue" col="2" row="5"
+						  style="background-color: #8C489F; margin: 5;"></CheckBox>
+				<GridLayout columns="*,*,*,*,*,*" rows="*" row="7" col="0" colSpan="5">
+					<Button text="Précedent" row="0" col="1" colSpan="2"
+							style="background-color: #0099CC; margin: 5;"
+							(tap)="goToPrevious()" horizontalAlignment="stretch"></Button>
+					<Button text="Suivant" row="0" col="3" colSpan="2" style="background-color: #0099CC; margin: 5;"
+							(tap)="goToNext()" horizontalAlignment="stretch"></Button>
+				</GridLayout>
+			</GridLayout>
+		</GridLayout>
+	</DockLayout>
 </RadSideDrawer>

@@ -52,4 +52,16 @@ export class ImpactComponent implements OnInit {
         this.routerExtensions.navigate(["/claim/camera"]);
 
     }
+
+	onMenuButtonTap(): void {
+		this.drawerComponent.sideDrawer.showDrawer();
+	}
+
+	onHomeButtonTap(): void {
+		this.routerExtensions.navigate(["/home"], {
+            transition: {
+                name: "fade"
+            }
+        });
+	}
 }

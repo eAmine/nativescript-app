@@ -88,4 +88,17 @@ export class CameraComponent implements OnInit {
         this.routerExtensions.navigate(["/home"]);
     }
 
+	onMenuButtonTap(): void {
+		console.log("onMenuButtonTap");
+		this.drawerComponent.sideDrawer.showDrawer();
+	}
+
+	onHomeButtonTap(): void {
+		console.log("tapped home button !");
+		this.routerExtensions.navigate(["/home"], {
+            transition: {
+                name: "fade"
+            }
+        });
+	}
 }

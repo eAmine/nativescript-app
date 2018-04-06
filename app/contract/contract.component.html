@@ -2,18 +2,16 @@
     <!-- 
     Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
     -->
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
-    <!-- 
-    Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
-    -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-                ios.position="left">
-    </ActionItem>
-    <ActionItem ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"></ActionItem>
-    <StackLayout style="font-size: 10px">
-        <Label class="action-bar-title" text="CONTRAT AUTO"></Label>
-        <Label class="action-bar-title" text="N° 16-32752"></Label>
-    </StackLayout>
+    <StackLayout orientation="horizontal"
+		ios:horizontalAlignment="center"
+		android:horizontalAlignment="center">
+		<StackLayout height="30"  class="header-item">
+			<Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
+		</StackLayout>
+		<StackLayout  height="30" class="header-item" style="margin-left: 16px;">
+			<Label text="CONTRAT"  class="action-label"></Label>
+		</StackLayout>
+	</StackLayout>
 </ActionBar>
 
 <!--
@@ -34,29 +32,50 @@ it shouldn't have any other siblings other than the <ActionBar> component.
     <!--
     Use the tkMainContent directive to display the content of the page when you have an app drawer.
     -->
-    <GridLayout class="page page-content" tkMainContent>        
-        <!--
-        The TabView component provides a simple way to navigate between different views by
-        tapping on some of the tabs or by swiping between the views.
-        Learn more about the TabView component in this documentation article:
-        http://docs.nativescript.org/angular/code-samples/ui/tab-view
-        -->
-        <TabView (selectedIndexChanged)="onSelectedIndexChanged($event)" sdkExampleTitle sdkToggleNavButton>
-            <!--
-            To add a new TabView item, add a new layout component with a tabItem Angular directive.
-            Assign the tabItem directive an object that declares the tab item button's title and icon source.
-            -->
-            <StackLayout *tabItem="{title: 'Infos', iconSource: getIconSource('infos')}">
-                <Infos></Infos>
-            </StackLayout>
-            <StackLayout *tabItem="{title: 'Docs', iconSource: getIconSource('docs')}">
-                <Docs></Docs>
-            </StackLayout>
-            <StackLayout *tabItem="{title: 'Couriers', iconSource: getIconSource('couriers')}">
-                <Couriers></Couriers>
-            </StackLayout>
-            <StackLayout *tabItem="{title: '', iconSource: 'res://declareclaim'}">
-            </StackLayout>
-        </TabView>
-    </GridLayout>
+
+	<DockLayout tkMainContent>
+		<GridLayout columns="*, *, *, *, *" rows="auto" dock="bottom" class="bottom-bar" height="50">
+			<StackLayout row="0" col="0" class="bottom-bar-icon-container" height="50">
+				<Image src="res://menu2" width="30" height="30" (tap)="onMenuButtonTap()"></Image>
+			</StackLayout>
+			<StackLayout row="0" col="1" class="bottom-bar-icon-container" height="50">
+				<Image src="res://emergency" width="30" height="30"></Image>
+			</StackLayout>
+			<StackLayout row="0" col="2" class="bottom-bar-icon-container" height="50">
+				<Image src="res://home" width="30" height="30" (tap)="onHomeButtonTap()"></Image>
+			</StackLayout>
+			<StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
+				<Image src="res://support" width="30" height="30"></Image>
+			</StackLayout>
+			<StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50">
+				<Image src="res://notification" width="30" height="30"></Image>
+			</StackLayout>
+		</GridLayout>
+
+		<GridLayout dock="top" class="page page-content" >        
+			<!--
+			The TabView component provides a simple way to navigate between different views by
+			tapping on some of the tabs or by swiping between the views.
+			Learn more about the TabView component in this documentation article:
+			http://docs.nativescript.org/angular/code-samples/ui/tab-view
+			-->
+			<TabView (selectedIndexChanged)="onSelectedIndexChanged($event)" sdkExampleTitle sdkToggleNavButton>
+			    <!--
+			    To add a new TabView item, add a new layout component with a tabItem Angular directive.
+			    Assign the tabItem directive an object that declares the tab item button's title and icon source.
+			    -->
+			    <StackLayout *tabItem="{title: 'Infos', iconSource: getIconSource('infos')}">
+				<Infos></Infos>
+			    </StackLayout>
+			    <StackLayout *tabItem="{title: 'Docs', iconSource: getIconSource('docs')}">
+				<Docs></Docs>
+			    </StackLayout>
+			    <StackLayout *tabItem="{title: 'Couriers', iconSource: getIconSource('couriers')}">
+				<Couriers></Couriers>
+			    </StackLayout>
+			    <StackLayout *tabItem="{title: '', iconSource: 'res://declareclaim'}">
+			    </StackLayout>
+			</TabView>
+		</GridLayout>
+	</DockLayout>
 </RadSideDrawer>

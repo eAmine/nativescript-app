@@ -3,7 +3,7 @@ import {DrawerTransitionBase, SlideInOnTopTransition} from "nativescript-ui-side
 import {RadSideDrawerComponent} from "nativescript-ui-sidedrawer/angular";
 import {isAndroid} from "platform";
 import {SelectedIndexChangedEventData, TabView, TabViewItem} from "tns-core-modules/ui/tab-view";
-import { RouterExtensions } from "nativescript-angular/router";
+import {RouterExtensions} from "nativescript-angular/router";
 
 @Component({
     selector: "Contract",
@@ -92,4 +92,18 @@ export class ContractComponent implements OnInit {
             }
         });
     }
+
+	onMenuButtonTap(): void {
+		console.log("onMenuButtonTap");
+		this.drawerComponent.sideDrawer.showDrawer();
+	}
+
+	onHomeButtonTap(): void {
+		console.log("tapped home button !");
+		this.routerExtensions.navigate(["/home"], {
+		    transition: {
+		        name: "fade"
+		    }
+		});
+	}
 }

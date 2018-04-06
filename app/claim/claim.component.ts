@@ -78,5 +78,17 @@ export class ClaimComponent implements OnInit {
         this.drawerComponent.sideDrawer.showDrawer();
     }
 
+	onMenuButtonTap(): void {
+		console.log("onMenuButtonTap");
+		this.drawerComponent.sideDrawer.showDrawer();
+	}
 
+	onHomeButtonTap(): void {
+		console.log("tapped home button !");
+		this.routerExtensions.navigate(["/home"], {
+            transition: {
+                name: "fade"
+            }
+        });
+	}
 }
