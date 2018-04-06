@@ -32,7 +32,8 @@ it shouldn't have any other siblings other than the <ActionBar> component.
     -->
     <GridLayout class="page page-content" tkMainContent>
         <StackLayout>
-            <RadDataForm [source]="claimEvent" tkExampleTitle tkToggleNavButton>
+            <RadDataForm #myCommitDataForm [source]="claimEvent" commitMode="Immediate" tkExampleTitle
+                         tkToggleNavButton>
                 <TKEntityProperty tkDataFormProperty name="natureCode" displayName="Nature du sinistre" index="0"
                                   [valuesProvider]="natureNames">
                     <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
@@ -55,8 +56,7 @@ it shouldn't have any other siblings other than the <ActionBar> component.
                     <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
                 </TKEntityProperty>
             </RadDataForm>
-            <Button text="Suivant" (tap)="onTap()"
-                    horizontalAlignment="stretch"></Button>
+            <Button text="Suivant" (tap)="goToNext()" horizontalAlignment="stretch"></Button>
         </StackLayout>
     </GridLayout>
 </RadSideDrawer>

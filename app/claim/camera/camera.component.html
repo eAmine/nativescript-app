@@ -1,0 +1,36 @@
+<ActionBar class="action-bar">
+    <!--
+    Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!--
+    Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+                ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Sinistre"></Label>
+</ActionBar>
+
+<RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
+    <!--
+    Use the tkDrawerContent directive to display the content of the app drawer on this page.
+    -->
+    <StackLayout tkDrawerContent>
+        <MyDrawer [selectedPage]="'Camera'"></MyDrawer>
+    </StackLayout>
+
+    <GridLayout class="page page-content" tkMainContent>
+        <GridLayout rows="auto, *, auto">
+            <Image row="0" [src]="cameraImage" stretch="fill" margin="10"></Image>
+            <StackLayout orientation="horizontal" row="2" padding="10">
+                <Button text="Précedent" (tap)="goToPrevious()"
+                        style="background-color: #0099CC;"
+                        horizontalAlignment="stretch"></Button>
+                <Button text="Prendre une photo" (tap)='onTakePictureTap($event)'></Button>
+                <Button text="Enregistrer" (tap)="save()" style="background-color: #0099CC;"
+                        horizontalAlignment="stretch"></Button>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</RadSideDrawer>
