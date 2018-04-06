@@ -84,21 +84,21 @@ export class CameraComponent implements OnInit {
     }
 
     save() {
-        TNSFancyAlert.showSuccess("S2017081234", "Votre sinistre a été créé.", "Retour");
+        TNSFancyAlert.showSuccess("Numéro Sinistre : S201708123", "  Votre demande a été prise en compte", "Retour");
         this.routerExtensions.navigate(["/home"]);
     }
 
-	onMenuButtonTap(): void {
-		console.log("onMenuButtonTap");
-		this.drawerComponent.sideDrawer.showDrawer();
-	}
+    onMenuButtonTap(): void {
+        console.log("onMenuButtonTap");
+        this.drawerComponent.sideDrawer.showDrawer();
+    }
 
-	onHomeButtonTap(): void {
-		console.log("tapped home button !");
-		this.routerExtensions.navigate(["/home"], {
+    onHomeButtonTap(): void {
+        console.log("tapped home button !");
+        this.routerExtensions.navigate(["/home"], {
             transition: {
                 name: "fade"
             }
         });
-	}
+    }
 }

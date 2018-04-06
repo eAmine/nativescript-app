@@ -1,14 +1,14 @@
 <ActionBar class="action-bar">
     <StackLayout orientation="horizontal"
-		ios:horizontalAlignment="center"
-		android:horizontalAlignment="center">
-		<StackLayout height="30"  class="header-item">
-			<Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
-		</StackLayout>
-		<StackLayout  height="30" class="header-item" style="margin-left: 16px;">
-			<Label text="SINISTRE"  class="action-label"></Label>
-		</StackLayout>
-	</StackLayout>
+                 ios:horizontalAlignment="center"
+                 android:horizontalAlignment="center">
+        <StackLayout height="30" class="header-item">
+            <Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
+        </StackLayout>
+        <StackLayout height="30" class="header-item" style="margin-left: 16px;">
+            <Label text="SINISTRE" class="action-label"></Label>
+        </StackLayout>
+    </StackLayout>
 </ActionBar>
 
 <RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
@@ -19,37 +19,38 @@
         <MyDrawer [selectedPage]="'Camera'"></MyDrawer>
     </StackLayout>
 
-	<DockLayout tkMainContent>
-		<GridLayout columns="*, *, *, *, *" rows="auto" dock="bottom" class="bottom-bar" height="50">
-			<StackLayout row="0" col="0" class="bottom-bar-icon-container" height="50">
-				<Image src="res://menu2" width="30" height="30" (tap)="onMenuButtonTap()"></Image>
-			</StackLayout>
-			<StackLayout row="0" col="1" class="bottom-bar-icon-container" height="50">
-				<Image src="res://emergency" width="30" height="30"></Image>
-			</StackLayout>
-			<StackLayout row="0" col="2" class="bottom-bar-icon-container" height="50">
-				<Image src="res://home" width="30" height="30" (tap)="onHomeButtonTap()" class="bottom-bar-icon"></Image>
-			</StackLayout>
-			<StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
-				<Image src="res://support" width="30" height="30"></Image>
-			</StackLayout>
-			<StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50">
-				<Image src="res://notification" width="30" height="30"></Image>
-			</StackLayout>
-		</GridLayout>
+    <DockLayout tkMainContent>
+        <GridLayout columns="*, *, *, *, *" rows="auto" dock="bottom" class="bottom-bar" height="50">
+            <StackLayout row="0" col="0" class="bottom-bar-icon-container" height="50">
+                <Image src="res://menu2" width="30" height="30" (tap)="onMenuButtonTap()"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="1" class="bottom-bar-icon-container" height="50">
+                <Image src="res://emergency" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="2" class="bottom-bar-icon-container" height="50">
+                <Image src="res://home" width="30" height="30" (tap)="onHomeButtonTap()"
+                       class="bottom-bar-icon"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
+                <Image src="res://support" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50">
+                <Image src="res://notification" width="30" height="30"></Image>
+            </StackLayout>
+        </GridLayout>
 
-		<GridLayout dock="top" class="page page-content">
-			<GridLayout rows="auto, *, auto">
-				<Image row="1" [src]="cameraImage" stretch="fill" margin="10"></Image>
-				<StackLayout orientation="horizontal" row="2" padding="10">
-					<Button text="Précedent" (tap)="goToPrevious()"
-							style="background-color: #0099CC;"
-							horizontalAlignment="stretch"></Button>
-					<Button text="Prendre une photo" (tap)='onTakePictureTap($event)'></Button>
-					<Button text="Enregistrer" (tap)="save()" style="background-color: #0099CC;"
-							horizontalAlignment="stretch"></Button>
-				</StackLayout>
-			</GridLayout>
-		</GridLayout>
-	</DockLayout>
+        <GridLayout dock="top" class="page page-content">
+            <GridLayout rows="auto, *, auto">
+                <Image row="1" [src]="cameraImage" stretch="fill" margin="10"></Image>
+                <StackLayout orientation="horizontal" row="2" padding="10">
+                    <Button text="Précedent" (tap)="goToPrevious()"
+                            style="background-color: #0099CC;"
+                            horizontalAlignment="stretch"></Button>
+                    <Button text="Prendre une photo" (tap)='onTakePictureTap($event)'></Button>
+                    <Button text="Enregistrer" (tap)="save()" style="background-color: #0099CC;"
+                            horizontalAlignment="stretch"></Button>
+                </StackLayout>
+            </GridLayout>
+        </GridLayout>
+    </DockLayout>
 </RadSideDrawer>
