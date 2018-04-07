@@ -7,6 +7,7 @@
         </StackLayout>
         <StackLayout height="30" class="header-item" style="margin-left: 16px;">
             <Label text="SINISTRE" class="action-label"></Label>
+            <Label text="PHOTOS" style="font-size: 10px;"></Label>
         </StackLayout>
     </StackLayout>
 </ActionBar>
@@ -46,25 +47,12 @@
             </StackLayout>
 
             <StackLayout row="2" col="1">
-                <Image row="1" src="res://photo" horizontalAlignment="stretch" (tap)="onTakePictureTap($event)"
-                       height="50"
-                       style="margin-top: 500px"></Image>
+                <Image row="1" src="res://photo" horizontalAlignment="stretch" (tap)="onTakePictureTap($event)" height="50" 
+                style="margin-top: 450px"></Image>
             </StackLayout>
             <StackLayout row="2" col="2">
-                <Image src="res://terminer" verticalAligment="center" (tap)="save()" style="margin-top: 5²00px"></Image>
+                <Image src="res://terminer" verticalAligment="center" (tap)="save()" style="margin-top: 450px; margin-right: 50px"></Image>
             </StackLayout>
-            <!-- <StackLayout orientation="horizontal" row="2" padding="10">
-                <Button text="Précedent" (tap)="goToPrevious()"
-                        style="background-color: #0099CC;"
-                        horizontalAlignment="stretch"></Button>
-                <Button text="Prendre une photo" (tap)='onTakePictureTap($event)'></Button>
-                <Button text="Enregistrer" (tap)="save()" style="background-color: #0099CC;"
-                        horizontalAlignment="stretch"></Button>
-            </StackLayout> -->
-            <!-- <StackLayout col="1" row="7" colSpan="3" rowSpan="2" style="margin-bottom: 10px;">
-                <Image src="res://suivant" verticalAligment="center" (tap)="goToNext()" style="margin-bottom: 20px;"></Image>
-            </StackLayout> -->
-
         </GridLayout>
     </DockLayout>
 </RadSideDrawer>

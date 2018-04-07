@@ -1,15 +1,15 @@
 <ActionBar class="action-bar">
     <StackLayout orientation="horizontal"
-                 ios:horizontalAlignment="center"
-                 android:horizontalAlignment="center">
-        <StackLayout height="30" class="header-item">
-            <Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
-        </StackLayout>
-        <StackLayout height="30" class="header-item" style="margin-left: 16px;">
-            <Label text="SINISTRE" class="action-label"></Label>
-            <Label text="IMPACTS"></Label>
-        </StackLayout>
-    </StackLayout>
+		ios:horizontalAlignment="center"
+		android:horizontalAlignment="center">
+		<StackLayout height="30"  class="header-item">
+			<Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
+		</StackLayout>
+		<StackLayout height="30" class="header-item" style="margin-left: 16px;">
+			<Label text="SINISTRE" class="action-label"></Label>
+            <Label text="IMPACTS" style="font-size: 10px;"></Label>
+		</StackLayout>
+	</StackLayout>
 </ActionBar>
 
 <!--
@@ -54,9 +54,9 @@ it shouldn't have any other siblings other than the <ActionBar> component.
         <GridLayout class="page page-content" tkMainContent>
             <GridLayout columns="*,*,*,*,*" rows="*,*,*,*,*,*,*,*" sdkExampleTitle sdkToggleNavButton>
                 <CheckBox #CB1 checked="false" fillColor="blue" col="2" row="0" colSpan="4" rowSpan="1"
-                          style="background-color: #8C489F; margin-left: 80px; margin-top: 70px;"></CheckBox>
-                <Image src="res://carnaked" col="1" row="1" rowSpan="5"
-                       colSpan="3" stretch="aspectFill" verticalAligment="center"></Image>
+                            style="background-color: #8C489F; margin-left: 80px; margin-top: 70px;"></CheckBox>
+                <Image src="res://carnaked" col="1" row="1" rowSpan="6" style="margin-bottom: 200px"
+                        colSpan="3" stretch="aspectFill" verticalAligment="center"></Image>
                 <CheckBox #CB2 checked="false" fillColor="blue" col="1" row="1"
                           style="background-color: #8C489F;"></CheckBox>
                 <CheckBox #CB3 checked="false" fillColor="blue" col="1" row="3"
@@ -64,13 +64,13 @@ it shouldn't have any other siblings other than the <ActionBar> component.
                 <CheckBox #CB4 checked="false" fillColor="blue" col="1" row="4" rowSpan="2"
                           style="background-color: #8C489F; margin-top: 100px"></CheckBox>
                 <CheckBox #CB5 checked="false" fillColor="blue" col="3" row="1" colSpan="3"
-                          style="background-color: #8C489F; margin-left: 140px;"></CheckBox>
+                        style="background-color: #8C489F; margin-left: 160px;"></CheckBox>
                 <CheckBox #CB6 checked="false" fillColor="blue" col="3" row="3" colSpan="3"
-                          style="background-color: #8C489F; margin-left: 140px;"></CheckBox>
+                            style="background-color: #8C489F; margin-left: 160px;"></CheckBox>
                 <CheckBox #CB7 checked="false" fillColor="blue" col="3" row="4" colSpan="3" rowSpan="2"
-                          style="background-color: #8C489F; margin-left: 140px; margin-top: 100px"></CheckBox>
+                            style="background-color: #8C489F; margin-left: 160px; margin-top: 100px"></CheckBox>
                 <CheckBox #CB8 checked="false" fillColor="blue" col="2" row="5" colSpan="4" rowSpan="2"
-                          style="background-color: #8C489F; margin-left: 80px; margin-top: 70px;"></CheckBox>
+                            style="background-color: #8C489F; margin-left: 80px; margin-top: 90px;"></CheckBox>
                 <StackLayout col="1" row="7" colSpan="3" rowSpan="2" style="margin-bottom: 10px;">
                     <Image src="res://suivant" verticalAligment="center" (tap)="goToNext()"
                            style="margin-bottom: 20px;"></Image>
