@@ -83,7 +83,11 @@ export class HomeComponent implements OnInit {
     }
 
     onNotificationButtonTap(): void {
-        console.log("onNotificationButtonTap");
+        this.routerExtensions.navigate(["/contract/paydrive"], {
+            transition: {
+                name: "fade"
+            }
+        });
     }
 
     onMenuButtonTap(): void {
