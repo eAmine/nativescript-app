@@ -1,26 +1,27 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {DrawerTransitionBase, SlideInOnTopTransition} from "nativescript-ui-sidedrawer";
 import {RadSideDrawerComponent} from "nativescript-ui-sidedrawer/angular";
-import {isAndroid} from "platform";
-import {SelectedIndexChangedEventData, TabView, TabViewItem} from "tns-core-modules/ui/tab-view";
+import {SelectedIndexChangedEventData, TabView} from "tns-core-modules/ui/tab-view";
 import {RouterExtensions} from "nativescript-angular/router";
+import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
+import {TimerObservable} from "rxjs/observable/TimerObservable";
 
 @Component({
     selector: "Contract",
     moduleId: module.id,
     templateUrl: "./contract.component.html",
-	styleUrls: ['./contract.component.scss']
+    styleUrls: ["./contract.component.scss"]
 })
-export class ContractComponent implements OnInit {
+export class ContractComponent implements OnInit, OnDestroy {
     /* ***********************************************************
     * Use the @ViewChild decorator to get a reference to the drawer component.
     * It is used in the "onDrawerButtonTap" function below to manipulate the drawer.
     *************************************************************/
     @ViewChild("drawer") drawerComponent: RadSideDrawerComponent;
-
-    private _sideDrawerTransition: DrawerTransitionBase;
-    
-    private _title: string;
+    public showChatBubble: boolean = false;
+    private subscription: Subscription;
+    private timer: Observable<any>;
 
     constructor(private routerExtensions: RouterExtensions) {
         /* ***********************************************************
@@ -29,24 +30,13 @@ export class ContractComponent implements OnInit {
         *************************************************************/
     }
 
+    private _sideDrawerTransition: DrawerTransitionBase;
+
     get sideDrawerTransition(): DrawerTransitionBase {
         return this._sideDrawerTransition;
     }
 
-    /* ***********************************************************
-    * Use the sideDrawerTransition property to change the open/close animation of the drawer.
-    *************************************************************/
-    ngOnInit(): void {
-        this._sideDrawerTransition = new SlideInOnTopTransition();
-    }
-
-    /* ***********************************************************
-    * According to guidelines, if you have a drawer on your page, you should always
-    * have a button that opens it. Use the showDrawer() function to open the app drawer section.
-    *************************************************************/
-    onDrawerButtonTap(): void {
-        this.drawerComponent.sideDrawer.showDrawer();
-    }
+    private _title: string;
 
     get title(): string {
         return this._title;
@@ -56,6 +46,22 @@ export class ContractComponent implements OnInit {
         if (this._title !== value) {
             this._title = value;
         }
+    }
+
+    /* ***********************************************************
+    * Use the sideDrawerTransition property to change the open/close animation of the drawer.
+    *************************************************************/
+    ngOnInit(): void {
+        this._sideDrawerTransition = new SlideInOnTopTransition();
+        //this.setTimer();
+    }
+
+    /* ***********************************************************
+    * According to guidelines, if you have a drawer on your page, you should always
+    * have a button that opens it. Use the showDrawer() function to open the app drawer section.
+    *************************************************************/
+    onDrawerButtonTap(): void {
+        this.drawerComponent.sideDrawer.showDrawer();
     }
 
     /* ***********************************************************
@@ -78,8 +84,8 @@ export class ContractComponent implements OnInit {
         const selectedTabViewItem = tabView.items[args.newIndex];
 
         this.title = selectedTabViewItem.title;
-        
-        if(args.newIndex == 3) {
+
+        if (args.newIndex == 3) {
             this.goToClaim();
         }
     }
@@ -93,17 +99,33 @@ export class ContractComponent implements OnInit {
         });
     }
 
-	onMenuButtonTap(): void {
-		console.log("onMenuButtonTap");
-		this.drawerComponent.sideDrawer.showDrawer();
-	}
+    onMenuButtonTap(): void {
+        console.log("onMenuButtonTap");
+        this.drawerComponent.sideDrawer.showDrawer();
+    }
 
-	onHomeButtonTap(): void {
-		console.log("tapped home button !");
-		this.routerExtensions.navigate(["/home"], {
-		    transition: {
-		        name: "fade"
-		    }
-		});
-	}
+    onHomeButtonTap(): void {
+        console.log("tapped home button !");
+        this.routerExtensions.navigate(["/home"], {
+            transition: {
+                name: "fade"
+            }
+        });
+    }
+
+    ngOnDestroy() {
+        if (this.subscription && this.subscription instanceof Subscription) {
+            this.subscription.unsubscribe();
+        }
+    }
+
+    setTimer() {
+        // set showloader to true to show loading div on view
+        this.showChatBubble = false;
+        this.timer = TimerObservable.create(8000, 1000);// 5000 millisecond means 5 seconds
+        this.subscription = this.timer.subscribe(() => {
+            // set showloader to false to hide loading div from view after 5 seconds
+            this.showChatBubble = true;
+        });
+    }
 }

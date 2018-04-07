@@ -10,7 +10,8 @@ import {ImpactComponent} from "./impact/impact.component";
 import {NativeScriptRouterModule} from "nativescript-angular";
 import {CameraComponent} from "./camera/camera.component";
 import {TNSCheckBoxModule} from "nativescript-checkbox/angular";
-
+import {ClaimListComponent} from "./list/list.component";
+import {registerElement} from "nativescript-angular/element-registry";
 @NgModule({
     imports: [
         NativeScriptCommonModule,
@@ -20,7 +21,7 @@ import {TNSCheckBoxModule} from "nativescript-checkbox/angular";
     ],
     providers: [{provide: ClaimFormDataService, useClass: ClaimFormDataService}],
     declarations: [
-        ClaimComponent, ImpactComponent, CameraComponent
+        ClaimComponent, ImpactComponent, CameraComponent, ClaimListComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
