@@ -38,19 +38,31 @@
                 <Image src="res://notification" width="30" height="30"></Image>
             </StackLayout>
         </GridLayout>
+        
+        <GridLayout rows="*, *, *" columns="*, *, *">
+            <StackLayout row="0" col="0" rowSpan="2" colSpan="3">
+                <Image [src]="cameraImage" stretch="fill" margin="10"></Image>
+            </StackLayout>
+            
+            <StackLayout row="2" col="1">
+                <Image row="1" src="res://photo" horizontalAlignment="stretch" (tap)="onTakePictureTap($event)" height="50" 
+                style="margin-top: 500px"></Image>
+            </StackLayout>
+            <StackLayout row="2" col="2">
+                <Image src="res://terminer" verticalAligment="center" (tap)="save()" style="margin-top: 5²00px"></Image>
+            </StackLayout>
+            <!-- <StackLayout orientation="horizontal" row="2" padding="10">
+                <Button text="Précedent" (tap)="goToPrevious()"
+                        style="background-color: #0099CC;"
+                        horizontalAlignment="stretch"></Button>
+                <Button text="Prendre une photo" (tap)='onTakePictureTap($event)'></Button>
+                <Button text="Enregistrer" (tap)="save()" style="background-color: #0099CC;"
+                        horizontalAlignment="stretch"></Button>
+            </StackLayout> -->
+            <!-- <StackLayout col="1" row="7" colSpan="3" rowSpan="2" style="margin-bottom: 10px;">
+                <Image src="res://suivant" verticalAligment="center" (tap)="goToNext()" style="margin-bottom: 20px;"></Image>
+            </StackLayout> -->
 
-        <GridLayout dock="top" class="page page-content">
-            <GridLayout rows="auto, *, auto">
-                <Image row="1" [src]="cameraImage" stretch="fill" margin="10"></Image>
-                <StackLayout orientation="horizontal" row="2" padding="10">
-                    <Button text="Précedent" (tap)="goToPrevious()"
-                            style="background-color: #0099CC;"
-                            horizontalAlignment="stretch"></Button>
-                    <Button text="Prendre une photo" (tap)='onTakePictureTap($event)'></Button>
-                    <Button text="Enregistrer" (tap)="save()" style="background-color: #0099CC;"
-                            horizontalAlignment="stretch"></Button>
-                </StackLayout>
-            </GridLayout>
         </GridLayout>
     </DockLayout>
 </RadSideDrawer>
