@@ -84,8 +84,8 @@ export class CameraComponent implements OnInit {
     }
 
     save() {
-        TNSFancyAlert.showSuccess("Numéro Sinistre : S201708123", "  Votre demande a été prise en compte", "Retour");
-        this.routerExtensions.navigate(["/home"]);
+        TNSFancyAlert.showSuccess("Sinistre : S20180812", "Votre déclaration a été prise en compte", "Retour");
+        this.routerExtensions.navigate(["/claim/list"]);
     }
 
     onMenuButtonTap(): void {

@@ -6,6 +6,7 @@ import {RouterExtensions} from "nativescript-angular/router";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";
+import {Claim} from "../model/claim";
 
 @Component({
     selector: "ClaimList",
@@ -21,9 +22,20 @@ export class ClaimListComponent implements OnInit, OnDestroy {
     public showChatBubble: boolean = false;
     private subscription: Subscription;
     private timer: Observable<any>;
+    private claims: Array<Claim>;
 
     constructor(private routerExtensions: RouterExtensions, private formDataService: ClaimFormDataService) {
         this.setTimer();
+        var claim1: Claim = new Claim("S20180812", "res://claim", "Sinistre Auto");
+        var claim3: Claim = new Claim("S20173513", "res://claim", "Sinistre Prévoyance");
+        var claim4: Claim = new Claim("S20173514", "res://claim", "Sinistre Habitation");
+        var claim5: Claim = new Claim("S20173515", "res://claim", "Sinistre Auto");
+        var claim6: Claim = new Claim("S20173516", "res://claim", "Sinistre Prévoyance");
+        var claim7: Claim = new Claim("S20173517", "res://claim", "Sinistre Auto");
+        var claim8: Claim = new Claim("S20173518", "res://claim", "Sinistre Habitation");
+        var claim9: Claim = new Claim("S20173519", "res://claim", "Sinistre Auto");
+        this.claims = new Array();
+        this.claims.push(claim1, claim3, claim4, claim5, claim6);
     }
 
     private _sideDrawerTransition: DrawerTransitionBase;

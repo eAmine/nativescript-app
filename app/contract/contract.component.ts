@@ -6,6 +6,8 @@ import {RouterExtensions} from "nativescript-angular/router";
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import {Feedback} from "nativescript-feedback";
+import {Color} from "tns-core-modules/color";
 
 @Component({
     selector: "Contract",
@@ -22,12 +24,14 @@ export class ContractComponent implements OnInit, OnDestroy {
     public showChatBubble: boolean = false;
     private subscription: Subscription;
     private timer: Observable<any>;
+    private feedback: Feedback;
 
     constructor(private routerExtensions: RouterExtensions) {
         /* ***********************************************************
         * Use the constructor to inject app services that will be needed for
         * the whole tab navigation layout as a whole.
         *************************************************************/
+        this.setTimer();
     }
 
     private _sideDrawerTransition: DrawerTransitionBase;
@@ -53,7 +57,7 @@ export class ContractComponent implements OnInit, OnDestroy {
     *************************************************************/
     ngOnInit(): void {
         this._sideDrawerTransition = new SlideInOnTopTransition();
-        //this.setTimer();
+        this.feedback = new Feedback();
     }
 
     /* ***********************************************************
@@ -91,7 +95,6 @@ export class ContractComponent implements OnInit, OnDestroy {
     }
 
     goToClaim(): void {
-        console.log("aller vers tototototottt");
         this.routerExtensions.navigate(['/claim'], {
             transition: {
                 name: "fade"
@@ -121,11 +124,27 @@ export class ContractComponent implements OnInit, OnDestroy {
 
     setTimer() {
         // set showloader to true to show loading div on view
-        this.showChatBubble = false;
-        this.timer = TimerObservable.create(8000, 1000);// 5000 millisecond means 5 seconds
-        this.subscription = this.timer.subscribe(() => {
-            // set showloader to false to hide loading div from view after 5 seconds
-            this.showChatBubble = true;
+        this.showChatBubble = true;
+        this.timer = TimerObservable.create(1000, 1000);
+        if (this.showChatBubble) {
+            this.subscription = this.timer.subscribe(() => {
+                this.showCustomIcon();
+                this.subscription.unsubscribe();
+            });
+        }
+    }
+
+    showCustomIcon(): void {
+        this.feedback.show({
+            title: "Pay as I drive",
+            message: "Consultez votre solde sur l'espace pay as I drive",
+            duration: 6000,
+            backgroundColor: new Color("#281644"),
+            icon: "paid", // in App_Resources/platform folders
+            onTap: () => {
+                console.log("showCustomIcon tapped");
+            }
         });
+        this.showChatBubble = false;
     }
 }

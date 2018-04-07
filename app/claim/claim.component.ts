@@ -107,7 +107,7 @@ export class ClaimComponent implements OnInit, OnDestroy {
     setTimer() {
         // set showloader to true to show loading div on view
         this.showChatBubble = false;
-        this.timer = TimerObservable.create(8000, 1000);// 5000 millisecond means 5 seconds
+        this.timer = TimerObservable.create(3000, 1000);// 5000 millisecond means 5 seconds
         this.subscription = this.timer.subscribe(() => {
             // set showloader to false to hide loading div from view after 5 seconds
             this.showChatBubble = true;

@@ -6,7 +6,7 @@
             <Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
         </StackLayout>
         <StackLayout height="30" class="header-item" style="margin-left: 16px;">
-            <Label text="SINISTRE" class="action-label"></Label>
+            <Label text="LISTE SINISTRES" class="action-label"></Label>
         </StackLayout>
     </StackLayout>
 </ActionBar>
@@ -51,10 +51,18 @@ it shouldn't have any other siblings other than the <ActionBar> component.
         </GridLayout>
 
         <GridLayout dock="top" class="page page-content">
-            <StackLayout>
-                <FAB (tap)="fabTap()" row="1" icon="res://chatbot" rippleColor="#f1f1f1"
-                     style="background-color: #8C489F; margin: 5;"></FAB>
-            </StackLayout>
+            <ListView [items]="claims" (itemTap)="onItemTap($event)" class="list-group">
+                <ng-template let-country="item" let-i="index" let-odd="odd" let-even="even">
+                    <GridLayout class="list-group-item" rows="auto" columns="auto, *">
+                        <Image row="0" col="0" class="thumb img-rounded" src="res://claim" width="30"
+                               height="30"></Image>
+                        <StackLayout row="0" col="1">
+                            <Label [text]="country.num" class="list-group-item-heading"></Label>
+                            <Label [text]="country.description" class="list-group-item-text"></Label>
+                        </StackLayout>
+                    </GridLayout>
+                </ng-template>
+            </ListView>
         </GridLayout>
     </DockLayout>
 </RadSideDrawer>
