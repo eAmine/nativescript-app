@@ -45,7 +45,7 @@ it shouldn't have any other siblings other than the <ActionBar> component.
             <StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
                 <Image src="res://support" width="30" height="30"></Image>
             </StackLayout>
-            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50">
+            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50" (tap)="onNotificationButtonTap">
                 <Image src="res://notification" width="30" height="30"></Image>
             </StackLayout>
         </GridLayout>
@@ -53,37 +53,57 @@ it shouldn't have any other siblings other than the <ActionBar> component.
             <GridLayout class="page page-content">
                 <StackLayout>
                     <CardView class="cardStyle" margin="10" elevation="40" radius="1">
-                        <GridLayout rows="10,30,30,80, auto, auto,10" columns="10,40, *, 30,10">
-                            <Image src="res://paid" stretch="aspectFit" verticalAlignment="stretch" col="1" row="1"
+                        <GridLayout rows="10,30,30,55, auto, auto,10" columns="10,40, *, 30,10">
+                            <Image src="res://carblue" stretch="aspectFit" verticalAlignment="stretch" col="1"
+                                   row="1"
                                    rowSpan="2"></Image>
-                            <Label class="createdBy text-left" horizontalAlignment="left" [text]="'item.CreatedBy'"
+                            <Label class="createdBy text-left size16" horizontalAlignment="left"
+                                   [text]="'Pay as you drive'"
                                    row="1"
                                    col="2" textWrap="true"></Label>
-                            <Label class="createdOn text-left" horizontalAlignment="left" [text]="'item.UpdatedDate'"
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Vous avez freiné brusquement aujourd'hui."
                                    row="2" col="2"></Label>
-                            <Image src="res://carnaked" stretch="aspectFit"
-                                   colSpan="3" col="1" row="3"></Image>
-                            <Label horizontalAlignment="left" [text]="'item.Title'" colSpan="3" row="4" textWrap="true"
-                                   col="1"></Label>
-                            <Label horizontalAlignment="left" [text]="'item.Summary'" textWrap="true" col="1" row="5"
-                                   colSpan="3"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Tout va bien ?"
+                                   row="3" col="2"></Label>
+                            <Label class="createdOn text-left size19" horizontalAlignment="right"
+                                   text="DECLARER UN SINISTRE"
+                                   row="4" col="2"></Label>
                         </GridLayout>
                     </CardView>
                     <CardView class="cardStyle" margin="10" elevation="40" radius="1">
-                        <GridLayout rows="10,30,30,80, auto, auto,10" columns="10,40, *, 30,10">
-                            <Image src="res://paid" stretch="aspectFit" verticalAlignment="stretch" col="1" row="1"
+                        <GridLayout rows="10,30,30,55, auto, auto,10" columns="10,40, *, 30,10">
+                            <Image src="res://cloudy" stretch="aspectFit" verticalAlignment="stretch" col="1"
+                                   row="1"
                                    rowSpan="2"></Image>
-                            <Label class="createdBy text-left" horizontalAlignment="left" [text]="'item.CreatedBy'"
+                            <Label class="createdBy text-left size17" horizontalAlignment="left"
+                                   [text]="'Avis météo'"
                                    row="1"
                                    col="2" textWrap="true"></Label>
-                            <Label class="createdOn text-left" horizontalAlignment="left" [text]="'item.UpdatedDate'"
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Avis de tempête dans le département 75-92"
                                    row="2" col="2"></Label>
-                            <Image src="res://carnaked" stretch="aspectFit"
-                                   colSpan="3" col="1" row="3"></Image>
-                            <Label horizontalAlignment="left" [text]="'item.Title'" colSpan="3" row="4" textWrap="true"
-                                   col="1"></Label>
-                            <Label horizontalAlignment="left" [text]="'item.Summary'" textWrap="true" col="1" row="5"
-                                   colSpan="3"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="le 10/04/2018."
+                                   row="3" col="2"></Label>
+                        </GridLayout>
+                    </CardView>
+                    <CardView class="cardStyle" margin="10" elevation="40" radius="1">
+                        <GridLayout rows="10,30,30,55, auto, auto,10" columns="10,40, *, 30,10">
+                            <Image src="res://citroen" stretch="aspectFit" verticalAlignment="stretch" col="1"
+                                   row="1"
+                                   rowSpan="2"></Image>
+                            <Label class="createdBy text-left size18" horizontalAlignment="left"
+                                   [text]="'Bon plan'"
+                                   row="1"
+                                   col="2" textWrap="true"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Votre voiture a 5 ans, pensez à la révision."
+                                   row="2" col="2"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Un garage agréé se situe à 500m de chez vous."
+                                   row="3" col="2"></Label>
                         </GridLayout>
                     </CardView>
                     <FAB (tap)="fabTap()" icon="res://chatbot" rippleColor="#f1f1f1"

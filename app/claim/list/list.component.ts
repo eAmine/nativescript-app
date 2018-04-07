@@ -99,4 +99,12 @@ export class ClaimListComponent implements OnInit, OnDestroy {
             this.showChatBubble = true;
         });
     }
+
+    onNotificationButtonTap(): void {
+        this.routerExtensions.navigate(["/contract/paydrive"], {
+            transition: {
+                name: "fade"
+            }
+        });
+    }
 }

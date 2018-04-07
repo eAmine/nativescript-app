@@ -53,15 +53,23 @@ export class ImpactComponent implements OnInit {
 
     }
 
-	onMenuButtonTap(): void {
-		this.drawerComponent.sideDrawer.showDrawer();
-	}
+    onMenuButtonTap(): void {
+        this.drawerComponent.sideDrawer.showDrawer();
+    }
 
-	onHomeButtonTap(): void {
-		this.routerExtensions.navigate(["/home"], {
+    onHomeButtonTap(): void {
+        this.routerExtensions.navigate(["/home"], {
             transition: {
                 name: "fade"
             }
         });
-	}
+    }
+
+    onNotificationButtonTap(): void {
+        this.routerExtensions.navigate(["/contract/paydrive"], {
+            transition: {
+                name: "fade"
+            }
+        });
+    }
 }

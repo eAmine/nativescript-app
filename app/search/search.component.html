@@ -1,15 +1,14 @@
 <ActionBar class="action-bar">
-    <!-- 
-    Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
-    -->
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
-    <!-- 
-    Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
-    -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-        ios.position="left">
-    </ActionItem>
-    <Label class="action-bar-title" text="Search"></Label>
+    <StackLayout orientation="horizontal"
+                 ios:horizontalAlignment="center"
+                 android:horizontalAlignment="center">
+        <StackLayout height="30" class="header-item">
+            <Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
+        </StackLayout>
+        <StackLayout height="30" class="header-item" style="margin-left: 16px;">
+            <Label text="PAY AS I DRIVE" class="action-label"></Label>
+        </StackLayout>
+    </StackLayout>
 </ActionBar>
 
 <!--
@@ -24,14 +23,93 @@ it shouldn't have any other siblings other than the <ActionBar> component.
     Use the tkDrawerContent directive to display the content of the app drawer on this page.
     -->
     <StackLayout tkDrawerContent>
-        <MyDrawer [selectedPage]="'Search'"></MyDrawer>
+        <MyDrawer [selectedPage]="'PayDrive'"></MyDrawer>
     </StackLayout>
-    
+
     <!--
     Use the tkMainContent directive to display the content of the page when you have an app drawer.
     -->
-    <GridLayout class="page page-content" tkMainContent>
-        <Label class="page-icon fa" text="&#xf002;"></Label>
-        <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-    </GridLayout>
+    <DockLayout tkMainContent>
+
+        <GridLayout columns="*, *, *, *, *" rows="auto" dock="bottom" class="bottom-bar" height="50">
+            <StackLayout row="0" col="0" class="bottom-bar-icon-container" height="50">
+                <Image src="res://menu2" width="30" height="30" (tap)="onMenuButtonTap()"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="1" class="bottom-bar-icon-container" height="50">
+                <Image src="res://emergency" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="2" class="bottom-bar-icon-container" height="50">
+                <Image src="res://home" width="30" height="30" (tap)="onHomeButtonTap()"
+                       class="bottom-bar-icon"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
+                <Image src="res://support" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50">
+                <Image src="res://notification" width="30" height="30"></Image>
+            </StackLayout>
+        </GridLayout>
+        <ScrollView dock="top">
+            <GridLayout class="page page-content">
+                <StackLayout>
+                    <CardView class="cardStyle" margin="10" elevation="40" radius="1">
+                        <GridLayout rows="10,30,30,55, auto, auto,10" columns="10,40, *, 30,10">
+                            <Image src="res://carblue" stretch="aspectFit" verticalAlignment="stretch" col="1"
+                                   row="1"
+                                   rowSpan="2"></Image>
+                            <Label class="createdBy text-left size16" horizontalAlignment="left"
+                                   [text]="'Pay as you drive'"
+                                   row="1"
+                                   col="2" textWrap="true"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Vous avez freiné brusquement aujourd'hui."
+                                   row="2" col="2"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Tout va bien ?"
+                                   row="3" col="2"></Label>
+                            <Label class="createdOn text-left size19" horizontalAlignment="right"
+                                   text="DECLARER UN SINISTRE"
+                                   row="4" col="2"></Label>
+                        </GridLayout>
+                    </CardView>
+                    <CardView class="cardStyle" margin="10" elevation="40" radius="1">
+                        <GridLayout rows="10,30,30,55, auto, auto,10" columns="10,40, *, 30,10">
+                            <Image src="res://cloudy" stretch="aspectFit" verticalAlignment="stretch" col="1"
+                                   row="1"
+                                   rowSpan="2"></Image>
+                            <Label class="createdBy text-left size17" horizontalAlignment="left"
+                                   [text]="'Avis météo'"
+                                   row="1"
+                                   col="2" textWrap="true"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Avis de tempête dans le département 75-92"
+                                   row="2" col="2"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="le 10/04/2018."
+                                   row="3" col="2"></Label>
+                        </GridLayout>
+                    </CardView>
+                    <CardView class="cardStyle" margin="10" elevation="40" radius="1">
+                        <GridLayout rows="10,30,30,55, auto, auto,10" columns="10,40, *, 30,10">
+                            <Image src="res://citroen" stretch="aspectFit" verticalAlignment="stretch" col="1"
+                                   row="1"
+                                   rowSpan="2"></Image>
+                            <Label class="createdBy text-left size18" horizontalAlignment="left"
+                                   [text]="'Bon plan'"
+                                   row="1"
+                                   col="2" textWrap="true"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Votre voiture a 5 ans, pensez à la révision."
+                                   row="2" col="2"></Label>
+                            <Label class="createdOn text-left" horizontalAlignment="left"
+                                   text="Un garage agréé se situe à 500m de chez vous."
+                                   row="3" col="2"></Label>
+                        </GridLayout>
+                    </CardView>
+                    <FAB (tap)="fabTap()" icon="res://chatbot" rippleColor="#f1f1f1"
+                         class="fab-button"></FAB>
+                </StackLayout>
+            </GridLayout>
+        </ScrollView>
+    </DockLayout>
 </RadSideDrawer>

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
     selector: "Docs",
@@ -16,5 +16,13 @@ export class DocsComponent implements OnInit {
         /* ***********************************************************
         * Use the "ngOnInit" handler to initialize data for the view.
         *************************************************************/
+    }
+
+    onNotificationButtonTap(): void {
+        this.routerExtensions.navigate(["/contract/paydrive"], {
+            transition: {
+                name: "fade"
+            }
+        });
     }
 }

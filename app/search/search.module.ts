@@ -1,14 +1,15 @@
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptCommonModule } from "nativescript-angular/common";
+import {NgModule, NO_ERRORS_SCHEMA} from "@angular/core";
+import {NativeScriptCommonModule} from "nativescript-angular/common";
 
-import { SharedModule } from "../shared/shared.module";
-import { SearchRoutingModule } from "./search-routing.module";
-import { SearchComponent } from "./search.component";
+import {SharedModule} from "../shared/shared.module";
+import {SearchRoutingModule} from "./search-routing.module";
+import {SearchComponent} from "./search.component";
+import {NativeScriptRouterModule} from "nativescript-angular";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
-        SearchRoutingModule,
+        SearchRoutingModule, NativeScriptRouterModule,
         SharedModule
     ],
     declarations: [
@@ -18,4 +19,5 @@ import { SearchComponent } from "./search.component";
         NO_ERRORS_SCHEMA
     ]
 })
-export class SearchModule { }
+export class SearchModule {
+}

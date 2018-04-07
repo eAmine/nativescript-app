@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { DrawerTransitionBase, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
-import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
+import {Component, OnInit, ViewChild} from "@angular/core";
+import {DrawerTransitionBase, SlideInOnTopTransition} from "nativescript-ui-sidedrawer";
+import {RadSideDrawerComponent} from "nativescript-ui-sidedrawer/angular";
+import {RouterExtensions} from "nativescript-angular";
 
 @Component({
     selector: "Search",
@@ -14,7 +15,14 @@ export class SearchComponent implements OnInit {
     *************************************************************/
     @ViewChild("drawer") drawerComponent: RadSideDrawerComponent;
 
+    constructor(private routerExtensions: RouterExtensions) {
+    }
+
     private _sideDrawerTransition: DrawerTransitionBase;
+
+    get sideDrawerTransition(): DrawerTransitionBase {
+        return this._sideDrawerTransition;
+    }
 
     /* ***********************************************************
     * Use the sideDrawerTransition property to change the open/close animation of the drawer.
@@ -23,15 +31,45 @@ export class SearchComponent implements OnInit {
         this._sideDrawerTransition = new SlideInOnTopTransition();
     }
 
-    get sideDrawerTransition(): DrawerTransitionBase {
-        return this._sideDrawerTransition;
-    }
-
     /* ***********************************************************
     * According to guidelines, if you have a drawer on your page, you should always
     * have a button that opens it. Use the showDrawer() function to open the app drawer section.
     *************************************************************/
     onDrawerButtonTap(): void {
+        this.drawerComponent.sideDrawer.showDrawer();
+    }
+
+    onTapHomeTile(navItemRoute: string): void {
+        this.routerExtensions.navigate([navItemRoute], {
+            transition: {
+                name: "fade"
+            }
+        });
+    }
+
+    onHomeButtonTap(): void {
+        console.log("tapped home button !");
+        this.routerExtensions.navigate(["/home"], {
+            transition: {
+                name: "fade"
+            }
+        });
+    }
+
+    onEmergencyButtonTap(): void {
+        console.log("onEmergencyButtonTap !");
+    }
+
+    onSupportButtonTap(): void {
+        console.log("onSupportButtonTap");
+    }
+
+    onNotificationButtonTap(): void {
+        console.log("onNotificationButtonTap");
+    }
+
+    onMenuButtonTap(): void {
+        console.log("onMenuButtonTap");
         this.drawerComponent.sideDrawer.showDrawer();
     }
 }

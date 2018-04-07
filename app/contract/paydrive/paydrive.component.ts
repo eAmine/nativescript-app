@@ -59,6 +59,14 @@ export class PayDriveComponent implements OnInit, OnDestroy {
         });
     }
 
+    onNotificationButtonTap(): void {
+        this.routerExtensions.navigate(["/contract/paydrive"], {
+            transition: {
+                name: "fade"
+            }
+        });
+    }
+
     ngOnDestroy() {
         if (this.subscription && this.subscription instanceof Subscription) {
             this.subscription.unsubscribe();
