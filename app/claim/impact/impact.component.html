@@ -7,6 +7,7 @@
 		</StackLayout>
 		<StackLayout  height="30" class="header-item" style="margin-left: 16px;">
 			<Label text="SINISTRE"  class="action-label"></Label>
+            <Label text="IMPACTS"></Label>
 		</StackLayout>
 	</StackLayout>
 </ActionBar>
@@ -30,7 +31,6 @@ it shouldn't have any other siblings other than the <ActionBar> component.
     Use the tkMainContent directive to display the content of the page when you have an app drawer.
     -->
 	<DockLayout tkMainContent>
-
 		<GridLayout columns="*, *, *, *, *" rows="auto" dock="bottom" class="bottom-bar" height="50">
 			<StackLayout row="0" col="0" class="bottom-bar-icon-container" height="50">
 				<Image src="res://menu2" width="30" height="30" (tap)="onMenuButtonTap()"></Image>
@@ -49,30 +49,30 @@ it shouldn't have any other siblings other than the <ActionBar> component.
 			</StackLayout>
 		</GridLayout>
 
-		<GridLayout dock="top" class="page page-content">
-			<GridLayout columns="*,*,*,*,*" rows="*,*,*,*,*,*,*,*" sdkExampleTitle sdkToggleNavButton>
-				<CheckBox #CB2 checked="false" fillColor="blue" col="2" row="0"
-						  style="background-color: #8C489F; margin: 5;"></CheckBox>
-				<Image src="res://carnaked" col="1" row="1" rowSpan="5"
-					   colSpan="3" stretch="aspectFill" verticalAligment="center"></Image>
-				<CheckBox #CB3 checked="false" fillColor="blue" col="1" row="2"
-						  style="background-color: #8C489F; margin: 5;"></CheckBox>
-				<CheckBox #CB3 checked="false" fillColor="blue" col="1" row="4"
-						  style="background-color: #8C489F; margin: 5;"></CheckBox>
-				<CheckBox #CB4 checked="false" fillColor="blue" col="3" row="2"
-						  style="background-color: #8C489F; margin: 5;"></CheckBox>
-				<CheckBox #CB5 checked="false" fillColor="blue" col="3" row="3"
-						  style="background-color: #8C489F; margin: 5;"></CheckBox>
-				<CheckBox #CB6 checked="false" fillColor="blue" col="2" row="5"
-						  style="background-color: #8C489F; margin: 5;"></CheckBox>
-				<GridLayout columns="*,*,*,*,*,*" rows="*" row="7" col="0" colSpan="5">
-					<Button text="Précedent" row="0" col="1" colSpan="2"
-							style="background-color: #0099CC; margin: 5;"
-							(tap)="goToPrevious()" horizontalAlignment="stretch"></Button>
-					<Button text="Suivant" row="0" col="3" colSpan="2" style="background-color: #0099CC; margin: 5;"
-							(tap)="goToNext()" horizontalAlignment="stretch"></Button>
-				</GridLayout>
-			</GridLayout>
-		</GridLayout>
+		<GridLayout class="page page-content" tkMainContent>
+            <GridLayout columns="*,*,*,*,*" rows="*,*,*,*,*,*,*,*" sdkExampleTitle sdkToggleNavButton>
+                <CheckBox #CB1 checked="false" fillColor="blue" col="2" row="0" colSpan="4" rowSpan="1"
+                            style="background-color: #8C489F; margin-left: 80px; margin-top: 70px;"></CheckBox>
+                <Image src="res://carnaked" col="1" row="1" rowSpan="5"
+                        colSpan="3" stretch="aspectFill" verticalAligment="center"></Image>
+                <CheckBox #CB2 checked="false" fillColor="blue" col="1" row="1"
+                            style="background-color: #8C489F;"></CheckBox>
+                <CheckBox #CB3 checked="false" fillColor="blue" col="1" row="3"
+                            style="background-color: #8C489F;"></CheckBox>
+                <CheckBox #CB4 checked="false" fillColor="blue" col="1" row="4" rowSpan="2"
+                            style="background-color: #8C489F; margin-top: 100px"></CheckBox>
+                <CheckBox #CB5 checked="false" fillColor="blue" col="3" row="1" colSpan="3"
+                        style="background-color: #8C489F; margin-left: 140px;"></CheckBox>
+                <CheckBox #CB6 checked="false" fillColor="blue" col="3" row="3" colSpan="3"
+                            style="background-color: #8C489F; margin-left: 140px;"></CheckBox>
+                <CheckBox #CB7 checked="false" fillColor="blue" col="3" row="4" colSpan="3" rowSpan="2"
+                            style="background-color: #8C489F; margin-left: 140px; margin-top: 100px"></CheckBox>
+                <CheckBox #CB8 checked="false" fillColor="blue" col="2" row="5" colSpan="4" rowSpan="2"
+                            style="background-color: #8C489F; margin-left: 80px; margin-top: 70px;"></CheckBox>
+                <StackLayout col="1" row="7" colSpan="3" rowSpan="2" style="margin-bottom: 10px;">
+                    <Image src="res://suivant" verticalAligment="center" (tap)="goToNext()" style="margin-bottom: 20px;"></Image>
+                </StackLayout>
+            </GridLayout>
+        </GridLayout>
 	</DockLayout>
 </RadSideDrawer>
