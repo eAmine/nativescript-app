@@ -45,7 +45,8 @@ it shouldn't have any other siblings other than the <ActionBar> component.
             <StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
                 <Image src="res://support" width="30" height="30"></Image>
             </StackLayout>
-            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50">
+            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50"
+                         (tap)="onNotificationButtonTap()">
                 <Image src="res://notification" width="30" height="30"></Image>
             </StackLayout>
         </GridLayout>

@@ -34,19 +34,21 @@
             <StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
                 <Image src="res://support" width="30" height="30"></Image>
             </StackLayout>
-            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50">
+            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50"
+                         (tap)="onNotificationButtonTap()">
                 <Image src="res://notification" width="30" height="30"></Image>
             </StackLayout>
         </GridLayout>
-        
+
         <GridLayout rows="*, *, *" columns="*, *, *">
             <StackLayout row="0" col="0" rowSpan="2" colSpan="3">
                 <Image [src]="cameraImage" stretch="fill" margin="10"></Image>
             </StackLayout>
-            
+
             <StackLayout row="2" col="1">
-                <Image row="1" src="res://photo" horizontalAlignment="stretch" (tap)="onTakePictureTap($event)" height="50" 
-                style="margin-top: 500px"></Image>
+                <Image row="1" src="res://photo" horizontalAlignment="stretch" (tap)="onTakePictureTap($event)"
+                       height="50"
+                       style="margin-top: 500px"></Image>
             </StackLayout>
             <StackLayout row="2" col="2">
                 <Image src="res://terminer" verticalAligment="center" (tap)="save()" style="margin-top: 5²00px"></Image>

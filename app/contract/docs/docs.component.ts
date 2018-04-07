@@ -18,11 +18,5 @@ export class DocsComponent implements OnInit {
         *************************************************************/
     }
 
-    onNotificationButtonTap(): void {
-        this.routerExtensions.navigate(["/contract/paydrive"], {
-            transition: {
-                name: "fade"
-            }
-        });
-    }
+
 }
