@@ -1,0 +1,68 @@
+<ActionBar class="action-bar">
+    <StackLayout orientation="horizontal"
+                 ios:horizontalAlignment="center"
+                 android:horizontalAlignment="center">
+        <StackLayout height="30" class="header-item">
+            <Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
+        </StackLayout>
+        <StackLayout height="30" class="header-item" style="margin-left: 16px;">
+            <Label text="LISTE SINISTRES" class="action-label"></Label>
+        </StackLayout>
+    </StackLayout>
+</ActionBar>
+
+<!--
+RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/SideDrawer/getting-started
+The RadSideDrawer component is designed to be used as a root element and
+it shouldn't have any other siblings other than the <ActionBar> component.
+-->
+<RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
+    <!--
+    Use the tkDrawerContent directive to display the content of the app drawer on this page.
+    -->
+    <StackLayout tkDrawerContent>
+        <MyDrawer [selectedPage]="'ClaimList'"></MyDrawer>
+    </StackLayout>
+
+    <!--
+    Use the tkMainContent directive to display the content of the page when you have an app drawer.
+    -->
+    <DockLayout tkMainContent>
+
+        <GridLayout columns="*, *, *, *, *" rows="auto" dock="bottom" class="bottom-bar" height="50">
+            <StackLayout row="0" col="0" class="bottom-bar-icon-container" height="50">
+                <Image src="res://menu2" width="30" height="30" (tap)="onMenuButtonTap()"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="1" class="bottom-bar-icon-container" height="50">
+                <Image src="res://emergency" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="2" class="bottom-bar-icon-container" height="50">
+                <Image src="res://home" width="30" height="30" (tap)="onHomeButtonTap()"
+                       class="bottom-bar-icon"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
+                <Image src="res://support" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50">
+                <Image src="res://notification" width="30" height="30"></Image>
+            </StackLayout>
+        </GridLayout>
+
+        <GridLayout dock="top" class="page page-content">
+            <ListView [items]="claims" (itemTap)="onItemTap($event)" class="list-group">
+                <ng-template let-country="item" let-i="index" let-odd="odd" let-even="even">
+                    <GridLayout class="list-group-item" rows="auto" columns="auto, *">
+                        <Image row="0" col="0" class="thumb img-rounded" src="res://claim" width="30"
+                               height="30"></Image>
+                        <StackLayout row="0" col="1">
+                            <Label [text]="country.num" class="list-group-item-heading"></Label>
+                            <Label [text]="country.description" class="list-group-item-text"></Label>
+                        </StackLayout>
+                    </GridLayout>
+                </ng-template>
+            </ListView>
+        </GridLayout>
+    </DockLayout>
+</RadSideDrawer>

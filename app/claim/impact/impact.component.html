@@ -1,0 +1,81 @@
+<ActionBar class="action-bar">
+    <StackLayout orientation="horizontal"
+		ios:horizontalAlignment="center"
+		android:horizontalAlignment="center">
+		<StackLayout height="30"  class="header-item">
+			<Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
+		</StackLayout>
+		<StackLayout height="30" class="header-item" style="margin-left: 16px;">
+			<Label text="SINISTRE" class="action-label"></Label>
+            <Label text="IMPACTS" style="font-size: 10px;"></Label>
+		</StackLayout>
+	</StackLayout>
+</ActionBar>
+
+<!--
+RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/SideDrawer/getting-started
+The RadSideDrawer component is designed to be used as a root element and
+it shouldn't have any other siblings other than the <ActionBar> component.
+-->
+<RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
+    <!--
+    Use the tkDrawerContent directive to display the content of the app drawer on this page.
+    -->
+    <StackLayout tkDrawerContent>
+        <MyDrawer [selectedPage]="'Impact'"></MyDrawer>
+    </StackLayout>
+
+    <!--
+    Use the tkMainContent directive to display the content of the page when you have an app drawer.
+    -->
+    <DockLayout tkMainContent>
+        <GridLayout columns="*, *, *, *, *" rows="auto" dock="bottom" class="bottom-bar" height="50">
+            <StackLayout row="0" col="0" class="bottom-bar-icon-container" height="50">
+                <Image src="res://menu2" width="30" height="30" (tap)="onMenuButtonTap()"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="1" class="bottom-bar-icon-container" height="50">
+                <Image src="res://emergency" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="2" class="bottom-bar-icon-container" height="50">
+                <Image src="res://home" width="30" height="30" (tap)="onHomeButtonTap()"
+                       class="bottom-bar-icon"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
+                <Image src="res://support" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50"
+                         (tap)="onNotificationButtonTap()">
+                <Image src="res://notification" width="30" height="30"></Image>
+            </StackLayout>
+        </GridLayout>
+
+        <GridLayout class="page page-content" tkMainContent>
+            <GridLayout columns="*,*,*,*,*" rows="*,*,*,*,*,*,*,*" sdkExampleTitle sdkToggleNavButton>
+                <CheckBox #CB1 checked="false" fillColor="blue" col="2" row="0" colSpan="4" rowSpan="1"
+                            style="background-color: #8C489F; margin-left: 80px; margin-top: 70px;"></CheckBox>
+                <Image src="res://carnaked" col="1" row="1" rowSpan="6" style="margin-bottom: 200px"
+                        colSpan="3" stretch="aspectFill" verticalAligment="center"></Image>
+                <CheckBox #CB2 checked="false" fillColor="blue" col="1" row="1"
+                          style="background-color: #8C489F;"></CheckBox>
+                <CheckBox #CB3 checked="false" fillColor="blue" col="1" row="3"
+                          style="background-color: #8C489F;"></CheckBox>
+                <CheckBox #CB4 checked="false" fillColor="blue" col="1" row="4" rowSpan="2"
+                          style="background-color: #8C489F; margin-top: 100px"></CheckBox>
+                <CheckBox #CB5 checked="false" fillColor="blue" col="3" row="1" colSpan="3"
+                        style="background-color: #8C489F; margin-left: 160px;"></CheckBox>
+                <CheckBox #CB6 checked="false" fillColor="blue" col="3" row="3" colSpan="3"
+                            style="background-color: #8C489F; margin-left: 160px;"></CheckBox>
+                <CheckBox #CB7 checked="false" fillColor="blue" col="3" row="4" colSpan="3" rowSpan="2"
+                            style="background-color: #8C489F; margin-left: 160px; margin-top: 100px"></CheckBox>
+                <CheckBox #CB8 checked="false" fillColor="blue" col="2" row="5" colSpan="4" rowSpan="2"
+                            style="background-color: #8C489F; margin-left: 80px; margin-top: 90px;"></CheckBox>
+                <StackLayout col="1" row="7" colSpan="3" rowSpan="2" style="margin-bottom: 10px;">
+                    <Image src="res://suivant" verticalAligment="center" (tap)="goToNext()"
+                           style="margin-bottom: 20px;"></Image>
+                </StackLayout>
+            </GridLayout>
+        </GridLayout>
+    </DockLayout>
+</RadSideDrawer>

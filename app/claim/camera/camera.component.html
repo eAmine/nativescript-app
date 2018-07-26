@@ -1,0 +1,58 @@
+<ActionBar class="action-bar">
+    <StackLayout orientation="horizontal"
+                 ios:horizontalAlignment="center"
+                 android:horizontalAlignment="center">
+        <StackLayout height="30" class="header-item">
+            <Image src="res://primobilelogo" width="30" height="30" class="action-image"></Image>
+        </StackLayout>
+        <StackLayout height="30" class="header-item" style="margin-left: 16px;">
+            <Label text="SINISTRE" class="action-label"></Label>
+            <Label text="PHOTOS" style="font-size: 10px;"></Label>
+        </StackLayout>
+    </StackLayout>
+</ActionBar>
+
+<RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
+    <!--
+    Use the tkDrawerContent directive to display the content of the app drawer on this page.
+    -->
+    <StackLayout tkDrawerContent>
+        <MyDrawer [selectedPage]="'Camera'"></MyDrawer>
+    </StackLayout>
+
+    <DockLayout tkMainContent>
+        <GridLayout columns="*, *, *, *, *" rows="auto" dock="bottom" class="bottom-bar" height="50">
+            <StackLayout row="0" col="0" class="bottom-bar-icon-container" height="50">
+                <Image src="res://menu2" width="30" height="30" (tap)="onMenuButtonTap()"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="1" class="bottom-bar-icon-container" height="50">
+                <Image src="res://emergency" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="2" class="bottom-bar-icon-container" height="50">
+                <Image src="res://home" width="30" height="30" (tap)="onHomeButtonTap()"
+                       class="bottom-bar-icon"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="3" class="bottom-bar-icon-container" height="50">
+                <Image src="res://support" width="30" height="30"></Image>
+            </StackLayout>
+            <StackLayout row="0" col="4" class="bottom-bar-icon-container" height="50"
+                         (tap)="onNotificationButtonTap()">
+                <Image src="res://notification" width="30" height="30"></Image>
+            </StackLayout>
+        </GridLayout>
+
+        <GridLayout rows="*, *, *" columns="*, *, *">
+            <StackLayout row="0" col="0" rowSpan="2" colSpan="3">
+                <Image [src]="cameraImage" stretch="fill" margin="10"></Image>
+            </StackLayout>
+
+            <StackLayout row="2" col="1">
+                <Image row="1" src="res://photo" horizontalAlignment="stretch" (tap)="onTakePictureTap($event)" height="50" 
+                style="margin-top: 450px"></Image>
+            </StackLayout>
+            <StackLayout row="2" col="2">
+                <Image src="res://terminer" verticalAligment="center" (tap)="save()" style="margin-top: 450px; margin-right: 50px"></Image>
+            </StackLayout>
+        </GridLayout>
+    </DockLayout>
+</RadSideDrawer>
